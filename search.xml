@@ -54,6 +54,33 @@
     
     
     <entry>
+      <title>搭建域环境</title>
+      <link href="/2021/06/08/yu-huan-jing-da-jian.htm"/>
+      <url>/2021/06/08/yu-huan-jing-da-jian.htm</url>
+      
+        <content type="html"><![CDATA[<p><strong>域环境搭建 准备： DC: Windows 2008 server R2 DM: Windows 2003 server SP2</strong></p><p><strong>Windows 2008 server R2 (域控)</strong></p><span id="more"></span><p>1、修改计算机名： 可以改成DC或者其他什么看着顺眼的名字，默认也行，就是搭建好域以后再改可能会遇到一些问题；</p><p><img src="/uploads/y1.png" alt="imgl"></p><p><img src="/uploads/y2.png" alt="imgl"></p><p>2、配置固定ip: 我虚拟机使用的桥接方式，并且路由器是192.168.3.1，所以在这如此设置，此处的DNS填写本机即，127.0.0.1；</p><p><img src="/uploads/y3.png" alt="imgl"></p><p>3、服务器管理器—角色：安装Active Directory 域服务并且会同时要求安装DNS服务器；</p><p><img src="/uploads/y4.png" alt="imgl"></p><p>4、配置域服务:打开服务器管理器或者在运行框下输入 dcpromo直接进行配置，选择新建，</p><p>Ps：这里可能会因为本地administrator的密码规则不合要求，导致安装失败，改一个强密码；</p><p><img src="/uploads/y5.png" alt="imgl"></p><p>5、设置林根域： 林就是在多域情况下形成的森林,根表示基础,其他在此根部衍生 具体见：<a href="http://angerfire.blog.51cto.com/198455/144123/">http://angerfire.blog.51cto.com/198455/144123/ </a></p><p>6、域数据存放的地址：默认即可。</p><p><strong>DM: Windows 2003 server SP2</strong></p><p>1、如果新安装的虚拟机安装时会有选择项是加入域还是组，我这里选择加入域，会让登录当前域的账号密码即“Domaim\administrator”（必须是域账号不是administrator）和对应密码；已有的Windows2003加入域，首先更改组为域选择正确的domain和domain账号密码即可。</p><p>2、安装成功后配置静态IP，DNS处填写DC的IP；</p><p><img src="/uploads/y6.png" alt="imgl"></p><p>3、在2003上执行net time显示如图，说明已经加入域，并且在Windows2008上的domain.com域，控制器上可以看到03的机器；</p><p><img src="/uploads/y7.png" alt="imgl"></p><p><img src="/uploads/y8.png" alt="imgl"></p><p><strong>域已经搭建完成，主域控会生成一个 krbtgt账号，他是Windows活动目录中使用的客户/服务器认证协议，为通信双方提供双向身份认证。</strong><br><img src="/uploads/y9.png" alt="imgl"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 内网 </tag>
+            
+            <tag> 域 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>开源工具DotNetToJScript详细编译教程</title>
       <link href="/2021/06/08/kai-yuan-gong-ju-dotnettojscript.htm"/>
       <url>/2021/06/08/kai-yuan-gong-ju-dotnettojscript.htm</url>
@@ -73,33 +100,6 @@
         <tags>
             
             <tag> Tools </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>搭建域环境</title>
-      <link href="/2021/06/08/yu-huan-jing-da-jian.htm"/>
-      <url>/2021/06/08/yu-huan-jing-da-jian.htm</url>
-      
-        <content type="html"><![CDATA[<p><strong>域环境搭建 准备： DC: Windows 2008 server R2 DM: Windows 2003 server SP2</strong></p><p><strong>Windows 2008 server R2 (域控)</strong></p><span id="more"></span><p>1、修改计算机名： 可以改成DC或者其他什么看着顺眼的名字，默认也行，就是搭建好域以后再改可能会遇到一些问题；</p><p><img src="/uploads/y1.png" alt="imgl"></p><p><img src="/uploads/y2.png" alt="imgl"></p><p>2、配置固定ip: 我虚拟机使用的桥接方式，并且路由器是192.168.3.1，所以在这如此设置，此处的DNS填写本机即，127.0.0.1；</p><p><img src="/uploads/y3.png" alt="imgl"></p><p>3、服务器管理器—角色：安装Active Directory 域服务并且会同时要求安装DNS服务器；</p><p><img src="/uploads/y4.png" alt="imgl"></p><p>4、配置域服务:打开服务器管理器或者在运行框下输入 dcpromo直接进行配置，选择新建，</p><p>Ps：这里可能会因为本地administrator的密码规则不合要求，导致安装失败，改一个强密码；</p><p><img src="/uploads/y5.png" alt="imgl"></p><p>5、设置林根域： 林就是在多域情况下形成的森林,根表示基础,其他在此根部衍生 具体见：<a href="http://angerfire.blog.51cto.com/198455/144123/">http://angerfire.blog.51cto.com/198455/144123/ </a></p><p>6、域数据存放的地址：默认即可。</p><p><strong>DM: Windows 2003 server SP2</strong></p><p>1、如果新安装的虚拟机安装时会有选择项是加入域还是组，我这里选择加入域，会让登录当前域的账号密码即“Domaim\administrator”（必须是域账号不是administrator）和对应密码；已有的Windows2003加入域，首先更改组为域选择正确的domain和domain账号密码即可。</p><p>2、安装成功后配置静态IP，DNS处填写DC的IP；</p><p><img src="/uploads/y6.png" alt="imgl"></p><p>3、在2003上执行net time显示如图，说明已经加入域，并且在Windows2008上的domain.com域，控制器上可以看到03的机器；</p><p><img src="/uploads/y7.png" alt="imgl"></p><p><img src="/uploads/y8.png" alt="imgl"></p><p><strong>域已经搭建完成，主域控会生成一个 krbtgt账号，他是Windows活动目录中使用的客户/服务器认证协议，为通信双方提供双向身份认证。</strong><br><img src="/uploads/y9.png" alt="imgl"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 内网 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 域 </tag>
-            
-            <tag> 内网 </tag>
             
         </tags>
       
